@@ -57,9 +57,6 @@ employForm = form(this.employeModel,path=>{
   required(path.email,{
     message:'Email is required'
   });
-  email(path.email,{
-    message:'Please enter a valid email address'
-  });
   required(path.department,{
     message:'please select the departrment'
   });

@@ -14,9 +14,9 @@
                         <p class="mb-2"><span class="text-muted">Designation:</span> {{emp.designation}}</p>
                         <p class="mb-0"><span class="text-muted">Salary:</span> ₹{{emp.salary}}</p>
                     </div>
-                    <div class="card-footer bg-white d-flex gap-2">
-                        <button class="btn btn-outline-primary btn-sm flex-fill" (click)="onedit(emp)">Edit</button>
-                        <button class="btn btn-outline-danger btn-sm flex-fill" (click)="onRemove(emp.id)">Delete</button>
+                    <div class="card-footer bg-white d-flex justify-content-between">
+                        <button class="btn btn-outline-primary btn-sm " (click)="onedit(emp)">Edit</button>
+                        <button class="btn btn-outline-danger btn-sm " (click)="onRemove(emp.id)">Delete</button>
                     </div>
                 </div>
             </div>

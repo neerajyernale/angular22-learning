@@ -1,0 +1,41 @@
+@if (isLoginedIn()) {
+    <h2>Welcome to the hrms dashbord</h2>
+
+}@else {
+    <h3>You have to log in the application in it</h3>
+}
+
+<!-- @switch (employeeStatus) {
+    @case ('active') {
+        <h1>employee is working</h1>
+    }
+    @case ('inactive') {
+        <p>employee is not working </p>
+    }
+} -->
+    <button class="btn btn-primary" (click)="onActive()">Staus</button>
+    <p
+    [ngClass]="{
+        'active':isActive(),
+        'inactive':!isActive()
+    }"
+    >{{isActive()? 'active emoplyee':'inactive emoplyee'}}
+
+    </p>
+
+<button class="btn btn-primary" (click)="onLogin()">Login</button>
+<ul class="list-gorup">
+    @if (showdata) {
+    @for (emp of employees(); track emp.id) {
+    <li class="list-group items">{{emp.role |uppercase}}</li>
+<button class="btn btn-danger" (click)="Delete(emp.id)">Delete</button>
+
+    }@empty {
+        <P
+        [ngStyle]="{
+            'Color':bgColor()
+        }"
+        >No emoplyee is avaliable</P>
+    }
+    }
+</ul>

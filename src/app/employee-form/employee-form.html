@@ -1,0 +1,86 @@
+<div class="card shdow-sm">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">{{ isInEditMode ? 'Update Employee' : 'Add Employee' }}</h4>
+    </div>
+    <div class="card-body">
+        <form (submit)="$event.preventDefault(); onSubmit()" novalidate>
+
+            <div class="mb-3">
+                <label class="form-label">Employee Name</label>
+                <input
+                type="text"
+                class="form-control"
+                [formField]="employForm.name">
+                @if (employForm.name().touched()&&
+                employForm.name().invalid()){
+                    @for (error of employForm.name().errors();track error){
+                        <small class="text-danger">{{error.message}}</small>
+                    }
+                }
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input 
+                type="email"
+                class="form-control"
+                [formField]="employForm.email">
+
+                @if(employForm.email().touched()&&
+                employForm.email().invalid()){
+                    @for (error of employForm.email().errors(); track error) {
+                        <small class="text-danger">{{error.message}}</small>
+                    }
+                }
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Deparment</label>
+                <select class="form-select" [formField]="employForm.department">
+                    <option value="">Select Department</option>
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Marketing">Marketing</option>
+                </select>
+                @if (employForm.department().touched()&&
+                employForm.department().invalid()) {
+                    @for (error of employForm.department().errors(); track error) {
+                        <small class="text-danger">{{error.message}}</small>
+                    }
+                }
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Designaton</label>
+                <input
+                type="text"
+                class="form-control"
+                [formField]="employForm.designation">
+
+                @if (employForm.designation().touched()&&
+                employForm.designation().invalid()) {
+                    @for (error of employForm.designation().errors(); track error) {
+                        <small class="text-danger">{{error.message}}</small>
+                    }
+                }
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Salary</label>
+                <input
+                type="number"
+                class="form-control"
+                [formField]="employForm.salary">
+                @if (employForm.salary().touched()&&
+                employForm.salary().invalid()) {
+                    @for (error of employForm.salary().errors(); track error) {
+                        <small class="text-danger">{{error.message}}</small>
+                    }
+                }
+            </div>
+            @if (!isInEditMode) {
+                <button type="submit" class="btn btn-primary w-100">Add Employee</button>
+            }
+            @if(isInEditMode){
+            <button type="button" class="btn btn-danger w-100" (click)="onUpdate()">update Employee</button>
+            }
+        </form>
+    </div>
+</div>
